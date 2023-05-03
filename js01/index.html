@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log('하이')
+        // alert('반갑')
+
+        let test = 23;
+        console.log('test :',test)
+        test = 30;
+        console.log(test)
+        String(true)
+        console.log(String(true))
+
+        var obj={
+            name:'martin',
+            born : '일산',
+            move:function(){
+                return '퇴근'
+            }
+        }
+        console.log(obj.born)
+        console.log(obj.move())
+
+        var arr = [1,2,3,4,5,'하이','헬로']
+        var arr2= new Array(1,2,3,'안녕','하세요')
+        console.log(arr2)
+
+        console.log(1=='1')
+        console.log(1==='1') //형도 같아야함
+        
+        //함수 종류 3가지
+        helloWorld()//호이스팅 가능
+
+        function helloWorld(){
+            console.log('명시적함수')
+        }
+        helloWorld()
+
+        // good() //호이스팅 불가능
+
+        const good = function(){
+            console.log('함수')
+        }
+
+        good()
+
+        // arrow() 호이스팅 불가능
+        const arrow = () =>{
+            console.log('화살표함수')
+        }
+
+        arrow()
+
+        function returnFunc(a,b){
+            return a+b;
+        }
+
+        console.log(returnFunc(3,2))
+
+
+        const no_1 = 1;
+        const no_2 = 2;
+        const no_3 = 3;
+
+        function add(){
+            alert(no_1+no_2+no_3);
+        }
+
+        function sub(){
+            return alert(no_1-no_2);
+        }
+
+        function divide(){
+            return alert(no_1/no_2);
+        }
+
+        const mul = ()=>{
+            alert(no_1*no_2)
+        }
+
+        add()
+        sub()
+        divide()
+        mul()
+
+        const value1 = 30;
+        const value2 = 20;
+        let code = '+';
+
+        function calc(num1,num2,num3){
+            
+            return `${num1} ${num2} ${num3}`
+        }
+        const result = calc(value1,value2,code)
+        console.log(result)
+
+    </script>
+</body>
+</html>

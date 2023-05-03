@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>시간의 바깥 - IU</h2>
+        <div>
+          서로를 <span>감</span>아 포개어진 <span>삶</span><br />
+          그들을 <span>가</span>만 내려보는 <span>달</span><br />
+          여전히 <span>많</span>아 하고 싶은 <span>말</span><br />
+          우리 좀 <span>봐</span> 꼭 하나 같<span>아</span><br />
+        </div>
+    </div>
+
+    <script>
+        //jQuery
+        $('span').css({'color':'blueviolet','font-weight':'bold'})
+        $('.container').css({'background-color':'#eee','text-align':'center'})
+
+
+        //js
+        let spans = document.querySelectorAll('span')
+        for(let span of spans){ //span 모두 가져오려면 for문으로 spans의 span 가져와야됨
+            span.style.backgroundColor='yellow'
+            span.style.fontSize='100px'
+        }
+
+        let container = document.querySelector('.container')
+        container.style.textAlign = 'center'
+        container.style.backgroundColor = '#eee'
+    </script>
+</body>
+</html>

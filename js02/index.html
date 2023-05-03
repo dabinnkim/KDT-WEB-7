@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div><button onclick=startGame()>게임시작</button></div>
+    <div id="hello" class="hi" name="good">안녕하세요</div>
+    <div id="nice" class="hi">반갑</div>
+    <div id="world">Hello World</div>
+    <a id="link" href="http://www.naver.com" target="_blank">링크이동</a>
+    <details>
+        <summary>하이하이</summary>
+        <ul>
+            <li>어쩌고저쩌고저쩌고</li>
+        </ul>
+    </details>
+    <script>
+        // console.log(document.heda)
+        // console.log(document.getElementsByTagName('div'))
+        // console.log(document.getElementById('hello')) 
+        // console.log(document.getElementsByClassName('hi'))
+        // console.log(document.getElementsByName('good'))
+        // console.log(document.querySelectorAll('.hi'))
+        // document.getElementById('hello').innerHTML="커몬"
+        // document.querySelector('.hi').innerHTML="반갑다고헤ㅔㅎ"
+
+        // document.wrtie('하이요') //html로 출력됨
+
+        document.getElementById('world').className='hi'//클래스 이름 추가
+        const world = document.getElementById('world');
+
+        //속성값을 가져오거나 설정할 경우
+        //가져오는 경우 getAttribute()
+        //설정하는 경우 setAttribute()
+        console.log(world.getAttribute('class'))
+
+
+        //링크이동의 주소 바꾸고 싶을때
+        const link = document.querySelector('#link')
+        console.log(link)
+        console.log(link.getAttribute('href')) //링크들어간 href 속성만 가져오기
+        link.setAttribute('href','https://google.com') //href 속성값 바꾸기 (속성값, 변경할값)
+        link.href = "https://www.daum.net" //setAttribute 안쓰고 바로 바꿀수도있음 but 명시적으로 써주는게 좋긴혀
+       
+        console.log(world.getAttribute('class')) //className으로 class를 추가했음
+
+        //style 변경
+        world.style.color='red'
+
+        const p = document.createElement('p') //p태그 추가
+        world.append(p)
+        world.appendChild(p)
+        // world.remove()//로그인 기능구현할때 로그인되면 안보여지게
+        const login = false //로그인 실패하면 정보안보이게, 되면 보이게 
+        login? world.append(p) : world.remove() //로그인 실패하면 지워주세여
+
+        
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+
+
+.circle{
+    width:100px;
+    height:100px;
+    border-radius: 50px;
+}
+
+#circle1{
+    background-color: red;
+}
+
+#circle2{
+    background-color: lightcoral;
+    position:relative;
+    left:60px;
+    top:-50px;
+}
+
+#circle3{
+    background-color: lightsalmon;
+    position:relative;
+    left:90px;
+    top:-90px;
+}
+
+#circle4{
+    background-color: lightpink;
+    position:relative;
+    left:140px;
+    top:-190px;
+
+}
+
+#circle5{
+    background-color: palevioletred;
+    position:relative;
+    left:200px;
+    top:-290px;
+}
+
+#circle6{
+    background-color: white;
+    width:40px;
+    height:40px;
+    position:relative;
+    left:20px;
+    top:-480px;
+}
+
+#circle7{
+    background-color: black;
+    width:25px;
+    height:25px;
+    position:relative;
+    left:20px;
+    top:-515px;
+}
+
+.drink{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: skewY(200deg);
+}
+
+
+.drink1{    
+    top:10px;
+}
+
+.drink2{
+    top:10px;
+    left:200px;
+}
+
+.drink3{
+    top:10px;
+    left:400px;
+}

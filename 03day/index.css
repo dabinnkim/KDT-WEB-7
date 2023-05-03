@@ -1,0 +1,41 @@
+.inline{
+    display: inline;
+}
+
+.block{
+    display: block;
+}
+
+
+
+.flex_box{
+    display: flex;
+    height: 100px;
+    align-items: center; /*설정한 영역(가로,세로)에서 가운데정렬*/   
+    justify-content: space-around; 
+    /* space-around, space-between, center 가장 많이씀*/    
+}
+
+.box{
+    width: 30px;
+    height:30px;
+    background-color: red;
+    margin:10px;
+}
+
+
+
+.flex_box1{
+    height:50px;
+    align-items: center;
+    display: flex;
+    justify-content: right; /*flex + center - 가운데 정렬*/
+    /* space-around, between, center 가장 많이씀*/
+}
+
+.box1{
+    width: 20px;
+    height:20px;
+    background-color: pink;
+    margin:10px;
+}

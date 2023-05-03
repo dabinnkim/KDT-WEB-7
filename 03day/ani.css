@@ -1,0 +1,27 @@
+#circle{
+    width: 100px;
+    height:100px;
+    border-radius: 50px;
+    background-color: pink;
+    animation-name: move;
+    animation-duration: 3s; /*지속 시간*/
+    animation-iteration-count: 20; /*반복 횟수*/
+    position:absolute; /*포지션값을 줘야 애니메이션 적용됨*/
+    animation-timing-function: ease;
+    right:50px;
+    bottom:0px;
+    box-shadow: 5px 5px 2px gray;
+}
+
+/* @keyframes move {
+    0% {left:0px; top:0px;}
+    25% {left:100px; top:0px;}
+    50% {left:100px; top:50px;}
+    75% {left:0px; top:50px;}
+    100% {left:0px; top:0px;}
+    /* from,to {left:50px; }
+    50%{left:200px;} */
+
+
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="parent">
+        <div class="hello"></div>
+        <div class="hello"></div>
+        <div class="hello"></div>
+        <div class="hello"></div>
+    </div>
+    <script>
+        const hello1 = document.getElementsByClassName('hello') //동적
+        const hello2 = document.querySelector('.hello') //정적
+        const parent = document.getElementById('parent')
+        console.log(hello1.length)
+        // console.log(hello2.length)
+
+
+        const divs = document.createElement('div') //div태그 만들어줌
+        //hello라는 클래스 속성만들어주기
+        divs.setAttribute('class','hello') 
+        const ps = document.createAttribute('p')
+        // ps.setAttribute('class','hello')
+        parent.append(divs)//부모에게 자식요소 추가-여러개 추가 가능
+        parent.appendChild(divs)//하나만 추가 가능
+        parent.after(divs) //after : 요소의 형제면서 뒤
+        parent.before(divs) //before : 요소의 형제면서 앞
+
+
+        //breack자리에 continue 나오면 건너뛰라는 의미
+        for(let i =0; i<10; i++){
+            if(i%2==0){ 
+                continue; //조건 제외해달라는 것
+            }console.log(i)
+        }
+    </script>
+</body>
+</html>

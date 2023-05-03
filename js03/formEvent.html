@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #circle{
+            width:30px;
+            height:30px;
+            border-radius: 15px;
+            background-color: red;
+            position:relative; /*요소의 원래 위치 기준으로 이동, top,bottom,left,right의 속성 줘야함*/
+        }
+    </style>
+</head>
+<body>
+    <input id="keyboard">입력하시오</input>
+    <input id="circle"></input>
+
+    <!-- 폼이벤트 -->
+    <form action="/" id="todo-form">
+        <input type="text" name="todo" />
+        <button>Add</button>
+    </form>
+
+    <!-- 위의 폼에서 입력한거 제출할곳 -->
+    <ul class="todos"></ul> 
+
+
+    <!-- input 변경되었을때 -->
+    <input type="text" id="change-input">
+    <div class="intro"></div> <!--위 input에서 입력한 것 출력-->
+
+
+    <div class="container">
+        <ul>
+            <li class="todo">1.해야할일</li>
+            <li class="todo">2.해야할일</li>
+            <li class="done">3.완료</li>
+            <li class="done">4.완료</li>
+            <li class="done">4.완료</li>
+        </ul>
+    </div>
+
+
+    <script>
+        
+        //input 키보드 코드 가져오기
+        const keyboard = document.querySelector('#keyboard')
+        keyboard.addEventListener('keydown',(e)=>{ //사용자가 키보드 누르면 발생하는 이벤트
+          console.log(e.code) //이벤트 안에서 코드값만 가져오자
+          if(e.code=="ArrowUp"){
+            console.log('up')
+          }
+        })
+
+
+        const circle = document.querySelector('#circle')
+        circle.addEventListener('keydown',(e)=>{
+            if(e.code=='ArrowRight'){
+                circle.style.left="50px"
+            }
+        })
+
+        //폼태그
+        const todoForm = document.querySelector('#todo-form')
+        const todos = document.querySelector('.todos')
+        console.log(todoForm)
+
+        todoForm.addEventListener('submit',(e)=>{ //제출이벤트
+            e.preventDefault(); //버튼 눌렀을때 새로고침 안됨
+            const todoInput = document.querySelector('input[name=todo]')
+            console.log(todoInput.value) 
+            const todo=todoInput.value //입력한값
+
+
+            const li =document.createElement('li') //li태그 생성
+            li.append(todo) //입력한값을 넣어줌
+            todos.append(li) //todos의 자식으로 들어감
+
+            todoInput.value='' //누르면 input 빈값으로 초기화
+        })
+
+
+
+        //input change(엔터)
+        const cinput = document.querySelector('#change-input')
+        cinput.addEventListener('change',()=>{ //change 폼 요소값이 변경 되고 해당 요소에서 포커스를 잃었을때 ex_엔터
+            console.log('변경되었음')
+            cinput.value='' //input 빈값
+        })
+        
+        cinput.addEventListener('input',(e)=>{
+            let intro = document.querySelector('.intro')
+            intro.textContent = e.target.value //텍스트 넣기
+        })
+
+
+
+        const i = document.querySelectorAll('li')
+        for(let li of i){ //클래스 이름바꾸기(todo,done서로)
+            li.classList.toggle('done')
+            li.classList.toggle('todo')
+        }
+
+
+</script>
+</body>
+</html>

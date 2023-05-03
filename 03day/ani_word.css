@@ -1,0 +1,17 @@
+#word{
+    position: relative;
+    /* animation-name: slide; */
+    /* animation-duration: 2s; */
+    animation:slide 2s 5 ease; /*축약가능 name,지속시간,반복횟수 순*/
+    position:absolute;
+}
+
+@keyframes slide {
+    from{
+        left:100%;
+        width:1000px;
+    }
+    to{
+        left:0px;
+    }
+}

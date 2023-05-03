@@ -1,0 +1,19 @@
+#day{
+    background-color: #efefef;
+}
+
+.calender tr:nth-child(odd){
+    background-color: skyblue;
+}
+
+.calender tr:nth-child(even){
+    background-color: beige;
+}
+
+.red{
+    color:red;
+}
+
+.blue{
+    color:blue;
+}

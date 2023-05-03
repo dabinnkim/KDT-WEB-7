@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">안녕하세요</div>
+    <button onClick="submitJavaScript()">변환1</button>
+    <button onClick="submitJquery()">변환2</button>
+    <!-- value 많이씀 -->
+    <h2>val()</h2> 
+    <input type="text"/>
+    <button onclick="getValue()">값 가져오기</button>
+    <button onclick="setValue()">값 설정하기</button>
+    
+    <br/>
+
+    <h2>css()</h2>
+    <div id="change">변경해주세요</div>
+    <button onclick="changeJs()">js로 바꾸기</button>
+    <button onclick="changeJquery()">jQuery로 바꾸기</button>
+    <button onclick="getJquery()">jQuery로 css값 가져오기</button>
+
+    <br/>
+    <h2>att()</h2>
+    <a href="https://www.naver.com" target="_blank" id="move">이동</a>
+    <button onclick="changeAttJs()">js 주소 바꾸기</button>
+    <button onclick="changeAttJquery()">jquery 주소 바꾸기</button>
+
+    <h2>text()</h2>
+    <p id="text">안녕하세요</p>
+    <button onclick="changeTextJs()">js로바꾸기</button>
+    <button onclick="changeTextJquery()">jquey로 바꾸기</button>
+
+    <br/>
+    <h2>html()</h2>
+    <p id="html">반갑습니다</p>
+    <button onclick="changeHtmlJs()">js로바꾸기</button>
+    <button onclick="changeHtmlJquery()">jquey로 바꾸기</button>
+
+
+    <script src="index.js"></script>
+</body>
+</html>

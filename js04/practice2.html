@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .div{
+            text-align: center;
+        }
+
+        img{
+            width:300px;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+    <div class='div'>
+        <img id="img" src="q.jpg" alt=""><br/>
+        <button class='btn apple' onclick="apple()">사과</button>
+        <button class='btn' onclick="banana()">바나나</button>
+        <button class='btn' onclick="grape()">포도</button>
+        <button class='btn' onclick="peach()">복숭아</button>
+    </div>
+
+    <script>
+        //퀴즈3
+        function printMsg(msg){
+            console.log(msg.toUpperCase())
+            console.log(msg.toUpperCase())
+            console.log(msg.toUpperCase())
+        }
+
+        //퀴즈4
+        function whatDay(day){
+            if(day===1){
+                return '월'
+            }else if(day===2){
+                return '화'
+            }else if(day===3){
+                return '수'
+            }else if(day===4){
+                return '목'
+            }else if(day===5){
+                return '금'
+            }else if(day===6){
+                return '토'
+            }else if(day===7){
+                return '일'
+            }else{
+                return null
+            }
+        }
+
+        //퀴즈5
+        function diceNumber(first,second){
+            if(typeof(first)=='string' || typeof(second)=='string'){ //isNaN 숫자가 아닌경우 true 출력
+                return 'Not a Number'
+            }else if((first+second)%4===0){
+                return '4의 배수'
+            }else{
+                return '4의 배수가 아님'
+            }
+        }
+
+        //퀴즈6
+        function fistLetterBig(str){
+            return str[0].toUpperCase()+str.slice(1)
+        }
+
+        //퀴즈7
+        function apple(){
+            $('#img').attr('src','apple.jpg') //img의 src 속성값 변경
+        }
+        function banana(){
+            $('#img').attr('src','bananas.jpg')
+        }
+        function grape(){
+            $('#img').attr('src','grapes.jpg')
+        }
+        function peach(){
+            $('#img').attr('src','peaches.jpg')
+        }
+
+
+        //퀴즈 7 this로 풀기
+        $('.btn').click(function() {
+            if( $(this)) //this - btn 클래스에서 내가 선택한 것
+            console.log($(this))
+            if( $(this).hasClass('apple')) {
+                $('img').attr('src', './image/apple.jpg')
+            } else if( $(this).hasClass('banana')) {
+                $('img').attr('src', './image/bananas.jpg')
+            } else if( $(this).hasClass('grape')) {
+                $('img').attr('src', './image/grapes.jpg')
+            } else if( $(this).hasClass('peache')) {
+                $('img').attr('src', './image/peaches.jpg')
+            }
+
+            //리팩토링 - 위의 코드 더 효율적으로 짜기
+            let fruits; //변수 만들어 놓기
+            if( $(this).hasClass('apple')) {
+                fruits = 'apple'
+            } else if( $(this).hasClass('banana')) {
+                fruits = 'bananas'
+            } else if( $(this).hasClass('grape')) {
+                fruits = 'grapes'
+            } else if( $(this).hasClass('peache')) {
+                fruits = 'peaches'
+            }
+            
+            $('img').attr('src', `${fruits}.jpg`) 
+            //img의 src 속성값을 변경시켜주므로 fruits의 변수가 설정된 이후에 이 코드가 실행되어야함
+            //그럼 이 코드는 변수 fruits에 3번 값이 넣어졌으므로 3번 실행되는겨?
+        })
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

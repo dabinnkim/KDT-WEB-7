@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div onclick='alert("div태그클릭")'>클릭</div>
+    <button id="button">버튼</button>
+    <div id="mouseover">마우스올리세요</div>
+    <button id="button2">이벤트리스너</button>
+    <button id="button3">마우스엔터</button>
+
+
+    <div id="div1">div태그입니다</div>
+
+    <button class="btns">일</button>
+    <button class="btns">이</button>
+    <button class="btns">삼</button>
+    <button class="btns">사</button>
+    <button class="btns">오</button>
+
+    <script>
+        const btn = document.querySelector('#button')
+        btn.addEventListener('click',()=>{
+            alert('안녕?')
+        })
+
+
+        const over = document.getElementById('mouseover')
+        function onMouseOver(){ //마우스오버
+            over.style.color='red'
+        }
+    
+        function onMouseOut(){ //마우스에서 떨어질 때
+            over.style.color='yellow'
+        }
+
+        over.onmouseover = onMouseOver //마우스오버했을때 함수 실행 (함수를 실행시킬때 괄호를 넣어야되므로 이벤트실행시킬때는 괄호 빼야됨)
+        over.onmouseout = onMouseOut 
+
+
+        const btn2 = document.querySelector('#button2')
+        btn2.addEventListener('click',()=>{
+            alert('ㅎㅇ')
+        }
+        )
+
+        const btn3=document.querySelector('#button3')
+
+        function onMouseEnter(){
+            const divs=document.createElement('div') 
+            btn3.append(divs) //선택한 요소의 맨앞에 추가
+        }
+
+        btn3.addEventListener('mouseenter',onMouseEnter)
+
+
+
+
+        const div1 = document.querySelector('#div1')
+
+        function onMouseOver2(){
+            div1.style.color="red"
+            div1.style.fontWeight="bold"
+        }
+
+        function onMouseOver3(){
+            div.style.color='blue'
+        }
+
+        div1.addEventListener('mouseover',onMouseOver2)
+
+
+        //버튼여러개 있을때 하나만 적용시키기 this
+
+        const btns = document.querySelectorAll('.btns');
+        function bgColor(){
+            this.style.backgroundColor='blue' //this:자기자신만 선택됨
+        }
+
+        for(let btn of btns){
+            console.log(btn)
+            btn.addEventListener('click',bgColor)
+        }
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

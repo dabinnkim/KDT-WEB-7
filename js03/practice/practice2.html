@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2 class="text-center">이달의 맛 BEST 9</h2>
+    <section class="text-center"></section>
+
+
+    <script>
+        const icecreams = [
+        '내가 아인슈페너?!',
+        '엄마는 외계인',
+        '민트 초콜릿 칩',
+        '뉴욕 치즈케이크',
+        '아이스 초당옥수수',
+        '초콜릿 무스',
+        '체리쥬빌레',
+        '뮤! 넌 내거야',
+        '오레오 쿠키 앤 크림',
+      ];
+
+        for (let i =1; i<=icecreams.length; i++){
+            let section = document.querySelector('.text-center')//섹션태그 선택
+            let article = document.createElement('article')//article 태그생성 
+            article.setAttribute('class','article-box')//article 태그에 class 추가
+            section.append(article)//section의 자식으로 추가
+            
+            let img = document.createElement('img')//img 태그 생성
+            img.setAttribute('src',`icecream${i}.png`)//img 태그에 src 수정
+            img.setAttribute('class','img-box')//img 태그에 클래스 추가
+            article.append(img)//article의 자식으로 추가
+
+            let h3 = document.createElement('h3')//h3 태그 생성
+            h3.setAttribute('class','text-center')
+            h3.innerHTML=`TOP${i}`
+            article.append(h3)
+
+            let div = document.createElement('div')//div 태그 생성
+            div.setAttribute('class','text-center')
+            div.textContent=icecreams[i-1]
+            article.append(div)
+
+            section.style='text-align : center'
+        }
+
+    </script>
+</body>
+</html>

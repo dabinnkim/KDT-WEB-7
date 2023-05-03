@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+   
+    <h6>요소탐색</h6>
+    <div class="root">
+        <div class=parent>
+            <div class="child1">자식1</div>
+            <div class="child2">자식2</div>
+            <div class="child3">자식3</div>
+        </div>
+    </div>
+    <button onclick="findParent()">부모찾기</button>
+    <button onclick="findParents()">조상찾기</button>
+    <button onclick="findNext()">다음 형제 찾기</button>
+    <button onclick="findPrev()">이전 형제 찾기</button>
+    <button onclick="findChildren()">모든 자식 찾기</button>
+
+
+     <!-- 
+    요소제어 
+    보통 class를 제어함, id는 한개씩 있지만 class는 덩어리 이기때문에
+
+    class 추가하는 이유 - 따로 css나 이벤트 등록하려고
+    -->
+
+    <h6>class 제어하기</h6>
+    <p class="origin-class">기존클래스</p>
+    <button onclick="addClass()">클래스 추가</button>
+    <button onclick="addClassJs()">js로 클래스 추가</button>
+
+    <button onclick="removeClass()">클래스 삭제</button>
+    <button onclick="removeClassJs()">js로 클래스 삭제</button>
+    
+    <button onclick="hasClass()">클래스 유무 확인</button>
+    <button onclick="hasClassJs()">js로 클래스 유무 확인</button>
+    
+    <button onclick="toggleClass()">토글키</button>
+    <button onclick="toggleClassJs()">js로 토글키</button>
+
+
+    <script src="append2.js"></script>
+</body>
+</html>

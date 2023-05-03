@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .sub1{
+            display : none;
+        }
+        .block{
+            display: block;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body style="height:1000px">
+    
+    <div class="hello">안녕하세요? 클릭하면 빨간색으로 바꿔줘</div>
+    <div class="numbers">
+        <div class="num">one</div>
+        <div class="num">two</div>
+        <div class="num">three</div>
+        <div class="num">four</div>
+    </div>
+
+    <div class="hover">변화상태 확인</div>
+
+    <div class="nav">
+        <div class="menu">menu1
+            <div class="sub1">sub-menu1
+                <div>menu2</div>
+                <div>menu3</div>
+                <div>menu4</div>
+            </div>
+        </div>        
+    </div>
+
+
+    <input class='input-key' type="text">
+
+
+    <h3>폼태그으으</h3>
+    <form action="/" id="todo-form">
+        <input type="text" name="todo"/> <!--name은 서버로 넘어갈 이름-->
+        <button>추가</button> <!--제출버튼-->
+    </form>
+    <ul class="todos"></ul> <!--폼태그 입력값 넣을곳-->
+
+
+    <script src="event.js"></script>
+</body>
+</html>

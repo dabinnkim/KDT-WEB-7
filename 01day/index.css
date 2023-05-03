@@ -1,0 +1,13 @@
+#hello{
+    background-color: red;
+}
+
+#back{
+    background-image: url("landscape-gcb775d8ec_1920.jpg");
+    background-size: 100%;
+    /* width:500px; */
+    height:500px;
+    background-repeat: no-repeat;
+
+}
+
