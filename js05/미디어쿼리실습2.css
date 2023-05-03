@@ -1,4 +1,29 @@
-.list-menu{
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blueviolet;
+    padding:0px 10px 0px 10px;
+    color:white;
+}
+
+h1{
+    width:100px;
+    text-align: center;
+}
+
+a{
+    text-decoration-line:none;
+    margin:5px;
+    color:white;
+}
+
+.bi{
+    color:white;
+}
+
+.list-menu{ /*메뉴*/
     display: none;
 }
 
@@ -6,17 +31,15 @@
     display: block;
 }
 
-.toggle-menu{
+.d-none{ /*붙으면 none*/
     display: none;
 }
 
-
-
-
-
-
-
-
+.toggle-menu-container{
+    background-color: rgb(187, 149, 223);
+    display: flex;
+    flex-direction:column;
+}
 
 
 @media (min-width:992px) { /*992이상일때*/
@@ -26,10 +49,13 @@
     .icon-menu{ /*아이콘이 가려짐*/
         display: none;
     }
+
+    .toggle-menu{
+        display: none;
+    }
+
+
 }
 
 @media (max-width:992px) { /*992미만일때*/
-    .toggle-menu{
-        display: block;
-    }
 }
