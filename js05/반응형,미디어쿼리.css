@@ -86,7 +86,7 @@ span{
     height:100px;
 }
 
-/* 미디어쿼리 600이상되었을때 red, 800이상되었을때 다시 되돌아옴*/
+/* 미디어쿼리 768px이상, 1024px이하 일 때*/
 @media (min-width : 768px) and (max-width:1024px) { /*자주쓰는 px 해상도*/
     #media{
         background-color: red;

@@ -1,0 +1,33 @@
+
+.parent{ 
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.child{
+    width:100px;
+    height:100px;
+    background-color: yellow;
+    margin:10px;
+}
+
+
+
+@media (max-width:1000px) { /*1000px이하일때 가운데 열 정렬*/
+    .parent{ 
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/*
+이거실습해보기
+flex-direction : row; 행
+flex-direction : column; 열
+
+*/
