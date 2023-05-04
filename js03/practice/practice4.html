@@ -8,14 +8,14 @@
 </head>
 <body>
     <h1>여기는 방명록!!</h1>
-    <form action="/">
-        <p>작성자 <input id='작성자' type="text"></p>
-        <p>내용 <input id='내용' type="text"></p>
+    <form action="/" id="form">
+        <label>작성자 <input id='writer' type="text"></label><br/>
+        <label>내용 <input id='content' type="text"></label><br/>
         <button id="btn">등록</button>
     </form>
     <br>
-    <table cellpadding="10" style="border:1px solid black">
-        <tr>
+    <table id='table' cellpadding="10" border='1' style="border:1px solid black">
+        <tr id="tr">
             <th>작성자</th>
             <th>내용</th>
             <th>작성일</th>
@@ -25,8 +25,50 @@
 
 
     <script>
-        //btn 누르면 tr,td 추가되어야함
-        const 작성자 = document.querySelector('#작성자')
+        let date = new Date()
+        let year = date.getFullYear() //현재 연도
+        let month = date.getMonth()+1  //현재 월 *월은 0부터 시작하므로 +1 해줘야함
+        let day = date.getDate() //현재 일
+        let hour = date.getHours() //현재 시간
+        let minute = date.getMinutes() //현재 분
+
+        const current = `${year}-${month}-${day} ${hour}:${minute}`
+
+        const form = document.querySelector('#form')
+        const writer = document.querySelector('#writer')
+        const content = document.querySelector('#content')
+        const btn = document.querySelector('#btn')
+
+        const table = document.querySelector('#table')
+        const tr = document.querySelector('#tr')
+
+        const name = document.querySelector('#name')
+        const memo = document.querySelector('#memo')
+        const today = document.querySelector('#today')//작성일
+        
+
+        //writer, content의 값들을 테이블에 넣어야됨
+        form.addEventListener('submit',function(e){
+            e.preventDefault() //새로고침 방지
+        
+
+            //태그생성
+            const tdTagChild1 =document.createElement('td') 
+            const tdTagChild2 =document.createElement('td') 
+            const tdTagChild3 =document.createElement('td') 
+            const trTag =document.createElement('tr') //기존 tr에 형제로 넣을 tr 태그
+            //자식요소로 넣기
+            tr.after(trTag) //tr을 기존tr의 형제 요소로 넣고
+            trTag.setAttribute('id','tr')
+            trTag.appendChild(tdTagChild1) //td를 tr의 자식 요소로 넣고
+            tdTagChild1.innerHTML=`${writer.value}`
+
+            trTag.appendChild(tdTagChild2);
+            tdTagChild2.innerHTML=`${content.value}`
+
+            trTag.appendChild(tdTagChild3);
+            tdTagChild3.innerHTML=`${current}`
+        })
     </script>
 </body>
 </html>
