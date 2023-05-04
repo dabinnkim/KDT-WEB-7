@@ -8,11 +8,11 @@
 </head>
 <body>
     <form action="" id="form">
-        값1: <input type="number" id="num1"><br/>
-        값2: <input type="number" id="num2"><br/>
-        연산자: <input type="text" id="cal">
+        <label>값1:</label> <input type="number" id="num1"><br/>
+        <label>값2:</label> <input type="number" id="num2"><br/>
+        <label>연산자:</label> <input type="text" id="cal">
         <button type="submit">계산</button>
-        <button onclick="초기화">초기화</button>
+        <button id="reset">초기화</button>
     </form>
     <label>결과</label>
     <input id="result"></input> <!--여기에 결과-->
@@ -23,28 +23,31 @@
         let num1 = document.querySelector('#num1')
         let num2 = document.querySelector('#num2')
         let cal = document.querySelector('#cal')
+        let reset = document.querySelector('#reset')
         let result = document.querySelector('#result')
 
-        form.addEventListener('submit',(e)=>{
-            e.preventDefault(); //버튼눌렀을때 새로고침 안됨
+        form.addEventListener('submit',(e)=>{ //submit 이벤트
+            e.preventDefault(); //버튼눌렀을때 새로고침 방지
            if(cal.value=='+'){
             result.value = Number(num1.value) + Number(num2.value)
            }else if(cal.value=='-'){
             result.value = Number(num1.value) - Number(num2.value)
            }else if(cal.value=='*'){
             result.value = Number(num1.value) * Number(num2.value)
-           }else{
+           }else if(cal.value=='/'){
             result.value = Number(num1.value) / Number(num2.value)
            }
-        
-           
-           
         })
 
+        reset.addEventListener('click',function(){ //각 input값 초기화  
+            num1.value=''
+            num2.value=''
+            cal.value=''
+            result.value='';
+        })
 
-        function 초기화(){
-            form.reset()
-        }
+        
+
     </script>
 </body>
 </html>
