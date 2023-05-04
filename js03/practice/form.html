@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="value1">값1 :</label>
+    <input type="number" id="value1">
+    <label for="value2">값2 :</label>
+    <input type="number" id="value2">
+    <label for="calc">연산자 :</label>
+    <input type="text" id="calc">
+
+    <button onclick="calc()">계산</button>
+    <button onclick="reset()">초기화</button>
+    <br/>
+    <label for="result">결과</label>
+    <input type="text" id="result" disabled>
+    
+    <script>
+        function calc(){
+
+        //input 입력값은 문자라서 형변환 해야함, Number 쓰지말고 맨앞에 + 만써도됨 꿀
+        //타입이 문자인 숫자 숫자로 형변환하는 경우 +로 가능 (Number 안써도됨)
+        //숫자를 문자로 형변환 할 때는 숫자+''(빈문자) 로 가능 (toString 안써도됨)
+            console.log(typeof(1+'')) //string으로 출력됨
+
+           const val1 = +document.querySelector('#value1').value 
+           const val2 = +document.querySelector('#value1').value
+           const calc = document.querySelector('#calc').value
+            console.log(val1,val2,calc)
+
+            let result;
+            if(calc==='+'){
+                result = val1+val2
+            }else if(calc==='-'){
+                result = val1-val2
+            }else if(calc==='*'){
+                result = val1*val2
+            }else if(calc==='/'){
+                result = val1/val2
+            }else{
+                retult='오류'
+            }
+            document.querySelector('#result').value=result
+        }
+        
+        function reset(){
+            //인풋값들 빈문자 넣으면 초기화됨 
+        }
+
+
+
+    </script>
+</body>
+</html>
