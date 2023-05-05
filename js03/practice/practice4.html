@@ -32,20 +32,14 @@
         let hour = date.getHours() //현재 시간
         let minute = date.getMinutes() //현재 분
 
-        const current = `${year}-${month}-${day} ${hour}:${minute}`
+        const current = `${year}-${month}-${day} ${hour}:${minute}` //현재 날짜, 시간
 
         const form = document.querySelector('#form')
         const writer = document.querySelector('#writer')
         const content = document.querySelector('#content')
         const btn = document.querySelector('#btn')
 
-        const table = document.querySelector('#table')
-        const tr = document.querySelector('#tr')
-
-        const name = document.querySelector('#name')
-        const memo = document.querySelector('#memo')
-        const today = document.querySelector('#today')//작성일
-        
+        const tr = document.querySelector('#tr')      
 
         //writer, content의 값들을 테이블에 넣어야됨
         form.addEventListener('submit',function(e){
@@ -59,15 +53,15 @@
             const trTag =document.createElement('tr') //기존 tr에 형제로 넣을 tr 태그
             //자식요소로 넣기
             tr.after(trTag) //tr을 기존tr의 형제 요소로 넣고
-            trTag.setAttribute('id','tr')
-            trTag.appendChild(tdTagChild1) //td를 tr의 자식 요소로 넣고
-            tdTagChild1.innerHTML=`${writer.value}`
+            // trTag.setAttribute('id','tr')
+            trTag.appendChild(tdTagChild1) //td 3개를 tr의 자식 요소로 넣기
+            tdTagChild1.innerHTML=`${writer.value}` //작성자
 
-            trTag.appendChild(tdTagChild2);
-            tdTagChild2.innerHTML=`${content.value}`
+            trTag.appendChild(tdTagChild2); 
+            tdTagChild2.innerHTML=`${content.value}` //내용
 
             trTag.appendChild(tdTagChild3);
-            tdTagChild3.innerHTML=`${current}`
+            tdTagChild3.innerHTML=`${current}` //현재
         })
     </script>
 </body>
