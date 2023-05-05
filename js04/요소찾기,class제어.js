@@ -1,6 +1,7 @@
 //child2 기준으로 요소 찾기
 function findParent(){
-    console.log($('.child2').parent())  //부모찾기   
+    console.log($('.child2').parent())  //부모찾기
+    // console.log(document.querySelector('.child2').parentElement)
 }
 
 function findParents(){
@@ -9,16 +10,21 @@ function findParents(){
 
 function findNext(){
     console.log($('.child2').next()) //다음형제 찾기
+    // console.log(document.querySelector('.child2').nextElementSibling)
 }
 
 function findPrev(){
     console.log($('.child').prev())//이전형제 찾기
+    // console.log(document.querySelector('.child2').previousElementSibling)
 }
 
 //parent 기준 요소 찾기
 function findChildren(){
     console.log($('.parent').children()) //모든 자식 찾기
 }
+
+
+
 
 //class 제어
 function addClass(){
@@ -58,3 +64,11 @@ function toggleClassJs(){
     let toggle = document.querySelector('.origin-class')
     toggle.classList.toggle('add-class')
 }
+
+function solution(n){
+
+    return n.toString().split('').map(e=>parseInt(e)).reduce((acc,cur)=>acc+cur)
+}
+
+console.log(solution(123)) //6
+
