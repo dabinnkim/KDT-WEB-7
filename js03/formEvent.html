@@ -47,12 +47,12 @@
 
     <script>
         
-        //input 키보드 코드 가져오기
+        //input 키보드 가져오기
         const keyboard = document.querySelector('#keyboard')
-        keyboard.addEventListener('keydown',(e)=>{ //사용자가 키보드 누르면 발생하는 이벤트
-          console.log(e.code) //이벤트 안에서 코드값만 가져오자
-          if(e.code=="ArrowUp"){
-            console.log('up')
+        keyboard.addEventListener('keydown',(e)=>{ //e - 사용자가 키보드 누르면 발생하는 이벤트
+          console.log(e.code) //code - 이벤트 안에서 코드값만 가져오자
+          if(e.code=="ArrowUp"){ // 사용자가 input에 화살표 위 버튼을 눌렀을 때
+            console.log('up');
           }
         })
 
