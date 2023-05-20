@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    
+    
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 142vh;
+    background-color: #d5ea2f;
+    /* overflow: scroll; */
+    /* width:100px; */
+    
+    
+    
+}
+
+.area{
+    position: absolute; /*부모랑 분리*/
+    background-color: red;
+    width: 100%;
+    align-items: center;
+}
+
+.section{
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height:100%
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box1{
+    width:260px;
+    height:260px;
+    background-color: aqua;
+    margin:5px;
+}
