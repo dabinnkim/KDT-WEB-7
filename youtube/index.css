@@ -1,0 +1,85 @@
+.flex-box{
+    display: flex;
+}
+
+.container{
+    position: relative;
+}
+
+.left-side{
+    width:20%
+}
+
+.right-side{
+    width:80%
+}
+
+.left{
+    background-color: aqua;
+    height:100vh; /*높이 100%*/
+}
+
+.right{
+    background-color: pink;
+    height:100vh; /*높이 100%*/
+}
+
+.logo{
+    position: absolute;
+    height:80px;
+}
+
+.menu{
+    position:relative;
+    top:40px;
+}
+
+.category{
+    padding:3px 5px;
+    background-color: beige;
+    border-radius: 10px;
+    margin:0 3px;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.image-box{
+    width:200px;
+    border-radius: 10px;
+}
+
+.movie-box{
+    margin:0 3px;
+}
+
+.user-logo{
+    width:30px;
+}
+
+.movie-info{
+    font-size: 12px;
+    margin-left:3px;
+}
+
+.evenly{
+    justify-content: space-evenly;
+}
+
+.movie-container{
+    margin:30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
