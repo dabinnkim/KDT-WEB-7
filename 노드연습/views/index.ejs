@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="register">
+      <label for="name">이름</label>
+      <input type="text" name="name" id="name" />
+      <span>성별</span>
+      <input type="radio" name="gender" value="men" id="gender" />남자
+      <input type="radio" name="gender" value="women" id="gender" />여자
+      <button type="button" onclick="onClick()">제출</button>
+      <fieldset>
+        <legend>취미</legend>
+        <input type="checkbox" name="hobby" value="노래" />노래
+        <input type="checkbox" name="hobby" value="산책" />산책
+      </fieldset>
+    </form>
+    <div class="result"></div>
+    <!-- 결과 출력할 곳 -->
+    <script>
+      const result = document.querySelector(".result");
+
+      const form = document.forms["register"];
+
+      //버튼 온클릭 함수
+      function onClick() {
+        console.log("axios GET 요청이다!!!!!");
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+          hobby: form.hobby.value,
+        };
+
+        axios({
+          url: "/axios",
+          method: "get",
+          params: data,
+        }).then(function (response) {
+          console.log(response.data);
+          const { name, gender, hobby } = response.data;
+          result.textContent = `이름 : ${name} 성별 : ${gender} 취미:${hobby}`;
+        });
+      }
+    </script>
+  </body>
+</html>
