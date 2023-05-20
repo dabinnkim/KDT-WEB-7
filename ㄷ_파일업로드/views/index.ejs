@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>파일업로드</title>
+  </head>
+  <body>
+    <h4>싱글 파일업로드</h4>
+    <!--multer는 멀티파트폼데이터만 사용할 수 있음-->
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="text" name="title" />
+      <!--여기 name값이 백엔드의 /upload로 들어감-->
+      <input type="file" name="fileName" />
+      <br />
+      <button type="submit">업로드</button>
+    </form>
+
+    <br />
+    <h4>여러개 파일 업로드</h4>
+    <form action="/upload/array" method="POST" enctype="multipart/form-data">
+      <!--multiple 붙여야 파일 여러개 고를수있음-->
+      <input type="file" name="fileName" multiple />
+      <button type="submit">업로드</button>
+    </form>
+
+    <h4>여러개 각각 파일 업로드</h4>
+    <form action="/upload/fields" method="POST" enctype="multipart/form-data">
+      <input type="file" name="fileName1" multiple /> 
+      <br />
+      <input type="file" name="fileName2" multiple />
+      <input type="submit" value="업로드" />
+    </form>
+    <br />
+  </form>
+  <h4>동적 파일 업로드</h4>
+    <input type="file" name="dynamicUpload" id="dynamicUpload" />
+    <button type="button" onclick="upload()">업로드</button>
+    <br />
+    <!--이미지 들어올 자리-->
+    <img id="img" width="100px" />
+
+    <script>
+      function upload() {
+        const formData = new FormData(); //form을 동적으로 제어
+        const file = document.querySelector("#dynamicUpload"); //file 타입 인풋 태그 가져오기
+        formData.append("dynamicUpload", file.files[0]); //dynamicUpload은 서버에서 해당파일을 식별하기 위한 키값
+        console.log(file.files[0]); //file.files[0] : input에 넣은 사진 가져와라
+
+        axios({
+          method: "POST",
+          url: "/dynamic",
+          data: formData,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }).then(function (response) {
+          console.log(response);
+          const img = document.querySelector("#img");
+          img.setAttribute("src", response.data.path); //img태그에 src 속성 추가해서 이미지 보이게
+        });
+      }
+    </script>
+  </body>
+</html>
