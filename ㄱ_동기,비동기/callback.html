@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback</title>
+</head>
+<body>
+    <script>
+        // 후입선출 나중에드러온게 먼저 나감
+        function first(){
+            second();
+            console.log('first')
+        }
+
+        function second(){
+            third()
+            console.log('second')
+        }
+
+        function third(){
+            console.log('third')
+        }
+
+        first();
+
+        
+
+        // function pinkDrink(callback){ //3초뒤에 코드 실행해주세요~
+        //     setTimeout(function(){
+        //         console.log('고민끝!');
+        //         product = '제로콜라';
+        //         price = 2000;
+        //         callback(product, price) //3초후에 실행시켜서 pay함수가 실행됨
+        //     },3000)
+        // }
+
+        // // function pinkDrink(){
+        // //     setTimeout(function(){
+        // //         console.log('고민끝')
+        // //         product='제로콜라'
+        // //         price=20000;
+        // //     })
+        // // }
+
+
+
+        // function pay(product, price){
+        //     console.log(`상품명: ${product}, 가격${price}`) //바로실행시켜버려서 상품명, 가격이 안들어감
+        // }
+
+
+        // let product;
+        // let price;
+        // goMart();
+        // pinkDrink(pay); //함수안에 다른함수 넣어서
+        // pay(product,price)
+
+
+        //promise 함수 예시1
+        function promise(flag) {
+                return new Promise(function (resolve, reject) {
+                    if (flag) { //true이면
+                        resolve(`promise 상태는 fulfilled! then으로 연결됩니다.\n 이때의 flag가 ${flag}입니다`)
+                    } else (`promise상태는 rejected! catch로 연결됩니다. \n 이때의 flag는 ${flag}입니다`)
+                })
+            }
+
+            promise(true)
+            .then(function (result) { //성공했을때 쓰는 함수
+                console.log(result)
+            })
+            .catch(function (err) { //실패했을 때 쓰는 함수
+                console.log(err)
+            })
+
+        
+        //promise 함수 예시 2
+        function goMart(){
+            console.log('마트에서 어떤 음료를 살지 고민')
+        }
+
+        function pinkDrink(){
+            return new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    console.log('프로미스 함수 실행');
+                    product='제로콜라'
+                    price=2000;
+                    resolve() //성공시 아래 then안에 있는 함수 실행된다~
+                },3000)
+            })
+        }
+
+        function pay(){
+            console.log(`상품명: ${product}, 가격${price}`) 
+        }
+
+        let product;
+        let price;
+        // goMart();
+        pinkDrink()
+        .then(goMart)
+        .then(pay) //pinkDrink 함수 성공시 then안의 pay 함수가 실행됨
+        
+
+
+    </script>
+</body>
+</html>

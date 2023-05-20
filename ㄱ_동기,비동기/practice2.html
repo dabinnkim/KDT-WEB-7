@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async/await 실습문제</title>
+</head>
+
+<body>
+    <script>
+        // function changeBgColor(newColor, delay, callback) {
+        //     setTimeout(function () {
+        //         document.body.style.backgroundColor = newColor;
+        //         callback();
+        //     }, delay);
+        // }
+        // changeBgColor('red', 1000, function () {
+        //     changeBgColor('orange', 1000, function () {
+        //         changeBgColor('yellow', 1000, function () {
+        //             changeBgColor('green', 1000, function () {
+        //                 changeBgColor('blue', 1000, function () {
+        //                     console.log('END!');
+        //                 });
+        //             });
+        //         });
+        //     });
+        // });
+
+
+        //위 코드 promist로 바꾸기
+        function changeBgColor(newColor,delay){
+            return new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    console.log('프로미스 실행')
+                    document.body.style.backgroundColor=newColor; //배경색 바뀜
+                    resolve();                
+                },delay)
+            })
+        }
+
+        // changeBgColor('red',2000)
+        // .then(function(){
+        //     return changeBgColor('skyblue',2000) 
+        // })
+        // .then(function(){
+        //     return changeBgColor('orange',2000)
+        // })
+        // .then(function(){
+        //     return changeBgColor('yellow',2000)
+        // })
+
+
+
+        // 위 코드 async/await로 바꾸기
+        async function exec(){
+            await changeBgColor('red',1000)
+            await changeBgColor('skyblue',1000)
+            await changeBgColor('orange',1000)
+            await changeBgColor('yellow',1000)
+        }
+
+        exec();
+
+
+
+        // 프로미스랑 async, await 한번에 쓰기
+        async function 배경색(newColor){
+            var promise = new Promise(function(resolve, reject){
+                document.body.style.backgroundColor=newColor;
+                resolve('성공했어요')
+            })
+        
+            var 결과 = await promise;
+            console.log(결과)
+            
+        }
+
+
+        배경색('pink')
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
