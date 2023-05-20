@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2><%= title%></h2>
+    <div>
+      <span><%= userInfo.id%>님 환영합니다</span>
+    </div>
+    <div>
+      당신의 성별은
+      <span
+        ><span style="color: blue"><%= userInfo.sex%></span>이고 생년월일 <%=
+        userInfo.date[0]%><%= userInfo.date[1]%><%= userInfo.date[2]%> 이며
+        관심사는 <%= userInfo.like%>입니다</span
+      >
+    </div>
+    <div>
+      좋아하는 색상은 <%=userInfo.color%>이고 좋아하는 숫자는
+      <%=userInfo.number%>입니다
+    </div>
+  </body>
+</html>
