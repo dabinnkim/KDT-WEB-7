@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습29</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form name="register2">
+      <label for="name">이름</label>
+      <input type="text" name="name" id="name" />
+      <fieldset>
+        <legend>성별</legend>
+        <input name="gender" value="남자" type="radio" /> 남자
+        <input name="gender" value="여자" type="radio" /> 여자<br />
+      </fieldset>
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="birthYear">
+          <% for(let i =2023; i>=2010; i--){%>
+          <option value="<%=i%>년"><%=i%></option>
+          <%}%>
+        </select>
+        <span>년</span>
+        <select name="birthMonth">
+          <% for(let i =1; i<=12; i++){%>
+          <option value="<%=i%>월"><%=i%></option>
+          <%}%>
+        </select>
+        <span>월</span>
+        <select name="birthDay">
+          <!--반복문으로 만들기-->
+          <% for(let i =1; i<=31; i++){%>
+          <option value="<%=i%>일"><%=i%></option>
+          <%}%>
+        </select>
+        <span>일</span>
+      </fieldset>
+      <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" name="like" value="여행" />여행
+        <input type="checkbox" name="like" value="패션" />패션
+        <input type="checkbox" name="like" value="음식" />음식<br />
+      </fieldset>
+      <button type="button" onclick="axiosGet()">회원가입</button>
+    </form>
+    <div class="result"></div>
+
+    <script>
+      const result = document.querySelector(".result");
+
+      function axiosGet() {
+        console.log("axios GET 요청~!");
+        const form = document.forms["register2"];
+        console.dir(form);
+
+        const check = document.querySelectorAll("input[name=like]:checked");
+        const arr = [];
+        let str = "";
+        check.forEach((el) => (str = el.value + str));
+
+        console.log(str);
+
+        //데이터
+        const params = {
+          name: form.name.value,
+          gender: form.gender.value,
+          birthYear: form.birthYear.value,
+          birthMonth: form.birthMonth.value,
+          birthDay: form.birthDay.value,
+          like: str,
+        };
+
+        console.log(params.like);
+
+        axios({
+          url: "/axios2",
+          method: "GET",
+          params,
+        }).then(function (res) {
+          console.log(res.data);
+          const { name, gender, birthYear, birthMonth, birthDay, like } =
+            res.data;
+          result.textContent = `이름 : ${name}, 성별 : ${gender}, 생년월일 : ${birthYear} ${birthMonth} ${birthDay}, 관심사 : ${like}`;
+        });
+      }
+    </script>
+  </body>
+</html>

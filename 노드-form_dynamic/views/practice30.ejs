@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>실습30</title>
+  </head>
+  <body>
+    <form name="register3">
+      <label for="id">아이디</label>
+      <input type="text" id="id" name="userid" />
+      <br />
+      <label for="pw">비밀번호</label>
+      <input type="password" id="pw" name="pw" />
+      <br />
+      <!-- axios쓸땐 어디에 제출하는게 아니므로 submit 쓰지 않음, input에 required 안먹는이유도 제출할곳이 없어서 -->
+      <button type="button" onclick="onClick()">로그인</button>
+    </form>
+    <div class="result"></div>
+
+    <script>
+      const idid = "banana";
+      const pwpw = "4321"; //input 입력값은 문자열로 받으므로 문자로 저장
+
+      const result = document.querySelector(".result");
+
+      const form = document.forms["register3"];
+
+      function onClick() {
+        console.log("axios post 요청~!");
+
+        const data = {
+          id: form.userid.value,
+          pw: form.pw.value,
+        };
+
+        //예외처리
+        //사용자가 아이디, 비번 입력하지 않을때
+        console.log(data.id);
+        if (data.id === "" || data.pw === "") {
+          result.textContent = "아이디와 비밀번호를 입력하세요";
+          return; //즉시종료
+        }
+        //axios는 위의 예외처리 조건이 충족되지 않은 경우에 실행되는 것
+        axios({
+          url: "/axios3",
+          method: "post",
+          data,
+        }).then(function (reponse) {
+          if (reponse.data.id == idid && reponse.data.pw == pwpw) {
+            result.textContent = `로그인 성공`;
+            result.style.color = "red";
+          } else {
+            result.textContent = `로그인 실패`;
+            result.style.color = "blue";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

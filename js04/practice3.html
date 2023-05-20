@@ -58,7 +58,7 @@
           href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/repeat"
           >MDN 사이드 이동</a
         ><br /><br />
-        <img src="./image/repeat_ex.png" alt="예시" /><br />
+        <!-- <img src="./image/repeat_ex.png" alt="예시" /><br /> -->
       </p>
       <li>
         <code>drawStars()</code>함수 호출 결과는 다음과 같습니다.<br />
@@ -88,41 +88,54 @@
       </li>
     </ul>
     <br />
-​
+
     <script>
-      function drawStars() {
-        // TODO: drawStars() 함수 내부 코드를 채워주세요.
-      }
-​
-      function drawStars2() {
-        // TODO: drawStars2() 함수 내부 코드를 채워주세요.
-      }
-​
-      function drawStars3() {
-        // TODO: drawStars3() 함수 내부 코드를 채워주세요.
-      }
-​
-      function drawStars4() {
-        // TODO: drawStars4() 함수 내부 코드를 채워주세요.
-      }
-​
-      function drawStars5() {
-        // TODO: drawStars5() 함수 내부 코드를 채워주세요.
-      }
-​
+
+      
+function printStars(num) {
+  for (let i = 1; i <= num; i++) { //num만큼 행출력
+    let star = '';
+    for (let j = 1; j <= i; j++) { //
+      star += '*';
+    }
+    console.log(star);
+  }
+}
+
+      // function drawStars2(lines) {
+      //   let result='';
+      //   for(let i = lines; i<lines; i--){
+      //     for(let j=1; j<=i; j++){
+      //       result+=' '+'*'
+      //     }
+      //   }result+=
+      // }
+// ​
+//       function drawStars3(lines) {
+//         // TODO: drawStars3() 함수 내부 코드를 채워주세요.
+//       }
+// ​
+//       function drawStars4(lines) {
+//         // TODO: drawStars4() 함수 내부 코드를 채워주세요.
+//       }
+// ​
+//       function drawStars5(lines) {
+//         // TODO: drawStars5() 함수 내부 코드를 채워주세요.
+//       }
+
       // TODO: 해당 html 파일을 실행한 브라우저 콘솔창에서 drawStars ~ drawStars5 함수를 호출해주세요!
       // drawStars(3);
       // drawStars(5);
-​
+
       // drawStars2(3);
       // drawStars2(5);
-​
+
       // drawStars3(3);
       // drawStars3(5);
-​
+
       // drawStars4(3);
       // drawStars4(5);
-​
+
       // drawStars5(3);
       // drawStars5(5);
     </script>
