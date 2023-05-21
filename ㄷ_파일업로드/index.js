@@ -72,7 +72,7 @@ app.get("/practice", function (req, res) {
 // /join으로 들어갔을때 result 렌더링
 app.post("/join", uploadDetail.single("fileName"), function (req, res) {
   // res.send(req.body);
-  console.log(req.file);
+  // console.log(req.file);
   res.render("result", {
     userInfo: {
       id: req.body.userid,
