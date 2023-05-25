@@ -36,6 +36,6 @@ exports.main = (req, res) => {
 
 //getVisitor 함수가 visitor.ejs를 렌더링 하고 date 이름으로 데이터도 전달 시킴
 exports.getVisitor = (req, res) => {
-  console.log(visitor.getVisitor()); //가상데이터 콘솔에 찍어보기
-  res.render("visitor", { data: visitor.getVisitor() });
+  console.log(visitor.visitorInfo()); //가상데이터 콘솔에 찍어보기
+  res.render("visitor", { data: visitor.visitorInfo() });
 };
