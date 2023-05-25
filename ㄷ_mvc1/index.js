@@ -10,8 +10,9 @@ app.use(express.json());
 
 //router 분리
 //미들웨어, 라우터 하나의 독립된 기능을 가진 함수
-const indexRoute = require("./routes/index"); //라우터 폴더를 가져오면됨(index.js는 생략이 가능)
+const indexRoute = require("./routes/index"); // index.js는 생략 가능해서 routes(폴더이름)만 써도됨
 app.use("/", indexRoute);
+//라우트의 index파일 안에 경로가 두개 있어도 하나만 만들어도 됨
 
 //route 폴더의 index로 분리
 // app.get("/", function (req, res) {
