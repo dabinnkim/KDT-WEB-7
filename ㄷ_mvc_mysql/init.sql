@@ -1,0 +1,14 @@
+CREATE TABLE visitor (
+    id INT NOT NULL AUTO_INCREMENT PRIMAY KEY,
+    name VARCHAR(10) NOT NULL,
+    comment MEDIUMTEXT 
+);
+
+--사용자 생성
+CREATE USER 'user'@'%' IDENTIFIED BY '1234'
+
+-- 사용자 권한
+GRANT ALL PRIVILEGES ON '+' TO 'user'@'%' WIDTH GRANT OPTION;
+
+-- 현재 사용중인 MYSQL 캐쉬를 지우고 설정 적음
+FLUSH PRIVILEGES;
