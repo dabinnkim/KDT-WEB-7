@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="login">
+      <fieldset>
+        <legend>로그인</legend>
+        <input type="text" id="userid" placeholder="ID를 입력하세요" />
+        <input type="text" id="pw" placeholder="PW를 입력하세요" />
+        <br />
+        <button type="button" onclick="loginUser()">로그인</button>
+      </fieldset>
+    </form>
+
+    <script>
+      //로그인 버튼
+      function loginUser() {
+        const form = document.forms["login"];
+        console.log(form.userid.value);
+        console.log(form.pw.value);
+
+        if (form.userid.value === "" || form.pw.value === "") {
+          alert("아이디, 비밀번호를 입력해주세요");
+          return;
+        }
+
+        //axios 사용하여 로그인 요청을 서버에 보냄
+        axios({
+          method: "post",
+          url: "/user/login",
+          data: {
+            userid: form.userid.value,
+            pw: form.pw.value,
+          },
+        })
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            return console.log(data);
+          });
+      }
+    </script>
+  </body>
+</html>

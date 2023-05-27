@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="user">
+      <h1>환영합니다</h1>
+      <fieldset>
+        <legend>회원가입</legend>
+        <input type="text" id="userid" placeholder="사용자 ID" />
+        <input type="text" id="name" placeholder="사용자 이름" />
+        <input type="password" id="pw" placeholder="사용자 비밀번호" />
+        <br />
+        <button type="button" onclick="createUser()">회원가입</button>
+      </fieldset>
+    </form>
+
+    <script>
+      //회원가입 버튼
+      function createUser() {
+        const form = document.forms["user"];
+        console.log(form.userid.value);
+        console.log(form.name.value);
+        console.log(form.pw.value);
+
+        if (
+          form.userid.value.length === 0 ||
+          form.name.value === 0 ||
+          form.pw.value === 0
+        ) {
+          alert("아이디, 이름, 비밀번호 입력하세요!");
+          return;
+        }
+
+        if (form.userid.value.length > 10) {
+          alert("아이디는 10글자 미만으로 작성해주세요");
+          return;
+        }
+
+        axios({
+          method: "post",
+          url: "/user/write",
+          data: {
+            userid: form.userid.value,
+            name: form.name.value,
+            pw: form.pw.value,
+          },
+        })
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            return console.log(data);
+          });
+      }
+    </script>
+  </body>
+</html>
