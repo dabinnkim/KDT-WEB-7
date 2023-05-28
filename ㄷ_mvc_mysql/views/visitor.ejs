@@ -15,7 +15,9 @@
         <legend>방명록 등록</legend>
         <input type="text" id="name" placeholder="사용자 이름" /><br />
         <input type="text" id="comment" placeholder="방명록" /><br />
-        <button type="button" onclick="createVisitor()">등록</button>
+        <div id="register">
+          <button type="button" onclick="createVisitor()">등록</button>
+        </div>
       </fieldset>
     </form>
     <hr />
@@ -33,17 +35,33 @@
       <tbody>
         <% for(let i =0; i < data.length; i++) { %>
         <tr id="tr_<%= data[i].id%>">
-          <td><%= data[i].id %></td>
+          <td>
+            <a href="/visitor/get?id=<%= data[i].id%>" target="_blank"
+              ><%= data[i].id %></a
+            >
+          </td>
           <td><%= data[i].name %></td>
           <td><%= data[i].comment %></td>
-          <td><button type="button">수정</button></td>
-          <td><button type="button">삭제</button></td>
+          <td>
+            <!-- 수정버튼 여러개이므로 온클릭에 인자 필요 수정,삭제할 id 값-->
+            <button type="button" onclick="editVisitor('<%= data[i].id%>')">
+              수정
+            </button>
+          </td>
+          <td>
+            <button type="button" onclick="deleteVisitor('<%= data[i].id %>')">
+              삭제
+            </button>
+          </td>
         </tr>
         <% } %>
       </tbody>
     </table>
     <script>
       const tbody = document.querySelector("tbody");
+      const button = document.querySelector("#register");
+
+      //등록버튼
       function createVisitor() {
         //폼태그 가져오기
         const form = document.forms["visitor"];
@@ -80,11 +98,86 @@
                 <td>${data.id}</td>
                 <td>${data.name}</td>
                 <td>${data.comment}</td>
-                <td><button type="button">수정</button></td>
-                <td><button type="button">삭제</button></td>
+                <td><button type="button" onclick="editVisitor(${data.id})">수정</button></td>
+                <td><button type="button" onclick="deleteVisitor(${data.id})">삭제</button></td>
             </tr>
             `;
             tbody.insertAdjacentHTML("beforeend", html); //beforeend : 가장 마지막 child, tobody의 가장 마지막에 변수 html가 추가된다는 뜻
+          });
+      }
+
+      //수정하는 화면변경
+      function editVisitor(num) {
+        const form = document.forms["visitor"];
+        console.log(typeof num);
+        axios({
+          method: "GET",
+          url: `/visitor/get?id=${Number(num)}`,
+        })
+          .then((res) => {
+            console.log(res.data);
+            return res.data; //성공시 data가 아래 then으로 넘어감
+          })
+          .then((data) => {
+            //data가 배열임
+            console.log("data", data);
+            const form = document.forms["visitor"];
+            form.name.value = data[0].name; //데이터의 이름을 가져옴
+            form.comment.value = data[0].comment;
+
+            const html = `
+            <button type="button" onclick="edit(${num})">수정완료</button>
+            `;
+            //수정버튼 넣을 위치 등록버튼 옆
+            button.innerHTML = html; //등록버튼을 바꿔줌
+          });
+      }
+
+      //수정확정
+      function edit(num) {
+        const form = document.forms["visitor"];
+        console.log(typeof num);
+
+        axios({
+          method: "patch",
+          url: "/visitor/edit",
+          data: {
+            id: Number(num),
+            name: form.name.value,
+            comment: form.comment.value,
+          },
+        })
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            console.log("data:", data);
+            const newData = document.querySelector(`#tr_${num}`).children;
+            console.log(newData);
+            newData[1].textContent = form.name.value;
+            newData[2].textContent = form.comment.value;
+          });
+      }
+
+      //삭제버튼
+      function deleteVisitor(num) {
+        //삭제하겠냐라는 대화상자나옴 !라서 반대니까? 예라고 했을때 코드실행
+        if (!confirm("삭제하시겠습니까?")) {
+          return;
+        }
+        axios({
+          method: "DELETE",
+          url: "/visitor/delete",
+          data: {
+            id: Number(num),
+          },
+        })
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            console.log(data);
+            document.querySelector(`#tr_${num}`).remove();
           });
       }
     </script>
