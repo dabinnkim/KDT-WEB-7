@@ -8,22 +8,30 @@
     <title>Document</title>
   </head>
   <body>
+    <!--비동기 형태는 action 필요없음-->
     <form name="user">
       <h1>환영합니다</h1>
       <fieldset>
         <legend>회원가입</legend>
-        <input type="text" id="userid" placeholder="사용자 ID" />
-        <input type="text" id="name" placeholder="사용자 이름" />
-        <input type="password" id="pw" placeholder="사용자 비밀번호" />
+        <input type="text" id="userid" placeholder="사용자 ID" required />
+        <input type="text" id="name" placeholder="사용자 이름" required />
+        <input type="password" id="pw" placeholder="사용자 비밀번호" required />
         <br />
         <button type="button" onclick="createUser()">회원가입</button>
       </fieldset>
     </form>
-
+    <div>
+      <a href="/user/signin">로그인</a>
+    </div>
     <script>
       //회원가입 버튼
       function createUser() {
         const form = document.forms["user"];
+        // console.log(form.checkValidty()); //위에 input 태그에 required 입력시 유효성 검사를 해줌
+        // if (!form.checkValidty()) {
+        //   //만약 false이면?
+        //   return;
+        // }
         console.log(form.userid.value);
         console.log(form.name.value);
         console.log(form.pw.value);
@@ -44,7 +52,7 @@
 
         axios({
           method: "post",
-          url: "/user/write",
+          url: "/user/signup",
           data: {
             userid: form.userid.value,
             name: form.name.value,
@@ -52,7 +60,11 @@
           },
         })
           .then((res) => {
-            return res.data;
+            res.data;
+            if (res.data.resul === true) {
+              alert("회원가입완료");
+              document.location.href = "/user/signin"; //회원가입완료되면 로그인창으로 자동으로감
+            }
           })
           .then((data) => {
             return console.log(data);

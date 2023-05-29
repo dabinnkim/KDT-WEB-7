@@ -14,9 +14,11 @@ router.get("/get", controller.CgetVisitor1);
 //GET localhost:8000/visitor/:id
 router.get("/:id", controller.CgetVisitor2); //콘솔창에 { id: '3' } 형식으로 출력
 
+//등록
 //POST localhost:8000/visitor/write
-router.post("/write", controller.postVisitor);
+router.post("/write", controller.CpostVisitor);
 
+//수정
 //PATCH localhost:8000/visitor/edit
 router.patch("/edit", controller.CpatchVisitor);
 

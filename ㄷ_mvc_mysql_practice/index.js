@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //localhost:8000/user
-//user가 라우터
+//user메인 라우터
 const userRouter = require("./routes/user");
 app.use("/user", userRouter);
 

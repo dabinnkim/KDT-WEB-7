@@ -17,8 +17,8 @@ exports.getVisitors = (req, res) => {
 exports.CgetVisitor1 = (req, res) => {
   console.log(req.query); //req.query가 사용자가 입력한 쿼리스트링 데이터를 가져옴
   visitor.getVisitors1(req.query.id, (value) => {
-    res.render("visitor", { data: value }); //ejs가 보내는 방식
-    //응답.send() : 클라이언트에 응답 데이터를 보낼때 사용 .send(),render() 보통 둘중 하나만씀
+    res.render("visitor", { data: value }); //쿼리스트링으로 가져온 id=?? 값을 뷰에 전달
+    // //응답.send() : 클라이언트에 응답 데이터를 보낼때 사용 .send(),render() 보통 둘중 하나만씀
     // res.send(value); //데이터를 보내는 방식?
   });
 };
@@ -28,13 +28,13 @@ exports.CgetVisitor2 = (req, res) => {
   //model에서 만든 모듈 실행
   console.log(req.params);
   visitor.getVisitors1(req.params.id, (value) => {
-    res.send(value);
+    res.send(value); //ejs에 value값만 보냄
   });
 };
 
-//모델의 데이터
-exports.postVisitor = (req, res) => {
-  console.log(req.body);
+//데이터 등록
+exports.CpostVisitor = (req, res) => {
+  // console.log(req.body);
   //모델에서 만든 post value의 콜백함수 받아온것
   visitor.postVisitor(req.body, (value) => {
     //데이터를 프론트에 보내줌
@@ -50,7 +50,7 @@ exports.postVisitor = (req, res) => {
 //수정
 //get빼고는 req.body??
 exports.CpatchVisitor = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   //모델에서 만든 모듈 실행
   visitor.MpatchVisitor(req.body, () => {
     res.send({ result: true }); //reulst:true 나 데이터 전송 성공했다 알리는것

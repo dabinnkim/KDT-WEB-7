@@ -60,7 +60,6 @@ exports.postVisitor = (data, callback) => {
 };
 
 //모델 수정시 PATCH 사용 (PUT도 사용하긴함)
-//모델에서 만든 모듈
 //data : 우리가 수정할 데이터
 exports.MpatchVisitor = (data, callback) => {
   //name은 문자열처리 해줘야함

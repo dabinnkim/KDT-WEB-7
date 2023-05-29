@@ -17,6 +17,10 @@
         <button type="button" onclick="loginUser()">로그인</button>
       </fieldset>
     </form>
+    <!--히든폼 고객들은 볼수없는 정보담음-->
+    <form action="/user/profile" method="post" name="form_info">
+      <input type="hidden" id="userid" name="userid" />
+    </form>
 
     <script>
       //로그인 버튼
@@ -33,9 +37,10 @@
         //axios 사용하여 로그인 요청을 서버에 보냄
         axios({
           method: "post",
-          url: "/user/login",
+          url: "/user/signin",
           data: {
             userid: form.userid.value,
+            name: form.name.value,
             pw: form.pw.value,
           },
         })
@@ -43,7 +48,8 @@
             return res.data;
           })
           .then((data) => {
-            return console.log(data);
+            document.location.href = "http://localhost:8000/user/profile";
+            return console.log(data); //이데이터를 안보이는 form에넣어라?
           });
       }
     </script>

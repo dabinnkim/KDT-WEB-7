@@ -65,7 +65,7 @@
       function createVisitor() {
         //폼태그 가져오기
         const form = document.forms["visitor"];
-        console.log(form.name.value); // 입려한 id
+        console.log(form.name.value); //입려한 id
         console.log(form.comment.value); //입력한 comment
         //아이디나 비번이 빈값이면 alert 출력
         if (form.name.value.length === 0 || form.comment.value.length === 0) {
@@ -79,6 +79,7 @@
         }
 
         axios({
+          //visitor/write 경로로 post 요청 보냄
           method: "post",
           url: "/visitor/write",
           data: {
@@ -110,6 +111,7 @@
       function editVisitor(num) {
         const form = document.forms["visitor"];
         console.log(typeof num);
+
         axios({
           method: "GET",
           url: `/visitor/get?id=${Number(num)}`,
