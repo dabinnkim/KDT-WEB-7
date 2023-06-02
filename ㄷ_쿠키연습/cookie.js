@@ -5,6 +5,7 @@ const app = express();
 const PORT = 8000;
 
 app.use(cookieParser());
+
 const cookieOption = {
   maxAge: 60 * 1000,
 };
@@ -14,10 +15,10 @@ app.set("view engine", "ejs");
 app.use("/view", express.static(__dirname + "/views"));
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { data: req.cookies.popup }); //req객체의 cookies 속성에서 popup이라는 이름의 쿠키
 });
 
-//axios에서 post
+//axios의 post
 app.post("/setCookie", (req, res) => {
   res.cookie("popup", "hide", cookieOption);
   res.send({ result: true });

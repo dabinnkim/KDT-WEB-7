@@ -51,7 +51,7 @@
                 type="checkbox"
                 value=""
                 id="checkbox"
-                onclick="closeModal(this)"
+                onclick="closeModal()"
               />
               <label class="form-check-label" for="flexCheckDefault">
                 오늘하루 안보이게
@@ -71,26 +71,23 @@
     <script>
       const myModal = new bootstrap.Modal("#exampleModal");
 
-      if (document.cookie.includes("popup=hide")) {
-        myModal.hide();
-      } else {
-        myModal.show();
+      if ("<%= data%>" === "") {
+        //popup이라는 이름의 쿠키 값이 비어있다면
+        myModal.show(); //모달창을 보여주세여
       }
 
-      //체크박스 모달함수
       function closeModal() {
         const checkbox = document.querySelector("#checkbox");
-
-        //axios를 사용해 /setCookie 경로로 post 요청
-        //chcked로 체크 확인 가능
         if (checkbox.checked) {
-          console.log("체크됨");
+          //checkbox.checked : 체크박스에 체크가 되어있다면 (true라면)
           axios({
+            //axios사용해서 /setCookie 경로로 post 해주시고
             method: "post",
             url: "/setCookie",
           }).then((res) => {
             console.log(res.data);
           });
+          myModal.hide(); //모달창을 숨겨주세여
         }
       }
     </script>
