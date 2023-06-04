@@ -24,12 +24,14 @@ secure - 같은 true하면 https에서만 세션을 주고받음
 app.set("view engine", "ejs");
 app.use("/view", express.static(__dirname + "/views"));
 
+//세션 데이터 설정
 //'/'경로로 get 요청이 발생했을때 req.session 객체 사용하여 세션에 홍길동 저장
 app.get("/", (req, res) => {
   req.session.name = "홍길동";
   res.send({ result: true });
 });
 
+//세션 데이터 확인
 // /getSession 경로로 get 요청 발생했을때 클라이언트에게 세션에 저장된 이름 제공
 app.get("/getSession", (req, res) => {
   res.send({ name: req.session.name });

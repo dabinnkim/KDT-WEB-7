@@ -21,13 +21,18 @@ app.use(
 //템플릿
 app.set("view engine", "ejs");
 app.use("/views", express.static(__dirname + "/views"));
+
+//세션 데이터 설정
 app.get("/", (req, res) => {
   req.session.name = "홍길동";
   res.send({ result: true });
 });
+
 app.get("/getSession", (req, res) => {
+  console.log(req.session.name);
   res.send({ name: req.session.name });
 });
+
 app.get("/clearSession", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
